@@ -1,22 +1,17 @@
-# Python cache
-
-**pycache**/
+# Python
+__pycache__/
 *.pyc
 
-# Virtual environment
-
+# Virtual env
 venv/
 .env
 
 # Database
-
 instance/
 *.db
 
-# VS Code settings
-
+# Editor
 .vscode/
 
-# Temporary files
-
+# Temp
 tempCodeRunnerFile.py
