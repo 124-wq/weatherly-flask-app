@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search History</title>
+    <style>
+        body{
+            font-family: Arial;
+            background:#0f172a;
+            color:white;
+            text-align:center;
+        }
+        .card{
+            background:#1e293b;
+            margin:15px auto;
+            padding:15px;
+            width:350px;
+            border-radius:12px;
+        }
+        a{
+            color:#60a5fa;
+            text-decoration:none;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Recent Searches</h1>
+
+{% for r in records %}
+<div class="card">
+    <a href="/?city={{ r.city }}">
+        {{ r.city }}, {{ r.country }}
+    </a>
+    <p>{{ r.temperature }}°C — {{ r.description }}</p>
+    <small>{{ r.created_at }}</small>
+</div>
+{% endfor %}
+
+<br>
+<a href="/">⬅ Back</a>
+
+</body>
+</html>
