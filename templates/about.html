@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About PM Accelerator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --accent: #4facfe;
+            --text-main: #ffffff;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?q=80&w=2851&auto=format&fit=crop') no-repeat center center/cover;
+            color: var(--text-main);
+            display: flex; justify-content: center; padding: 40px 20px;
+        }
+        .container {
+            width: 100%; max-width: 700px;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 30px;
+            padding: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            animation: fadeIn 0.8s ease-out;
+        }
+        .header { display: flex; align-items: center; margin-bottom: 30px; gap: 15px; }
+        .back-btn {
+            color: white; text-decoration: none; font-size: 20px;
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: var(--glass-bg); transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--accent); }
+        
+        h1 { font-size: 28px; }
+        p { color: #e2e8f0; line-height: 1.6; margin-bottom: 20px; }
+        
+        .service-card {
+            background: rgba(255,255,255,0.05); padding: 20px; border-radius: 16px;
+            margin-bottom: 15px; border: 1px solid transparent; transition: 0.3s;
+        }
+        .service-card:hover { border-color: var(--accent); background: rgba(255,255,255,0.1); }
+        .service-title { color: var(--accent); font-weight: 700; margin-bottom: 8px; font-size: 18px; }
+        
+        a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        a:hover { text-decoration: underline; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <a href="/" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+        <h1>About PM Accelerator</h1>
+    </div>
+
+    <p>The Product Manager Accelerator Program is designed to support PM professionals through every stage of their careers. From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.</p>
+    
+    <p>Our Product Manager Accelerator community are ambitious and committed. Through our program they have learnt, honed and developed new PM and leadership skills.</p>
+
+    <h3 style="margin: 30px 0 15px 0;">Our Services</h3>
+
+    <div class="service-card">
+        <div class="service-title">🚀 PMA Pro</div>
+        <p>End-to-end product manager job hunting program that helps you master FAANG-level PM skills. 25% of our offers came from tier 1 companies and get paid as high as $800K/year.</p>
+    </div>
+
+    <div class="service-card">
+        <div class="service-title">🚀 AI PM Bootcamp</div>
+        <p>Gain hands-on AI Product Management skills by building a real-life AI product with a team of AI Engineers, data scientists, and designers.</p>
+    </div>
+
+    <div class="service-card">
+        <div class="service-title">🚀 PMA Power Skills</div>
+        <p>Designed for existing product managers to sharpen their product management skills, leadership skills, and executive presentation skills.</p>
+    </div>
+
+    <div class="service-card">
+        <div class="service-title">🚀 1:1 Resume Review</div>
+        <p>We help you rewrite your killer product manager resume. <a href="https://www.drnancyli.com/pmresume" target="_blank">Get our FREE killer PM resume template.</a></p>
+    </div>
+
+    <div class="service-card">
+        <div class="service-title">🚀 Free Training</div>
+        <p>We also published over 500+ free training courses. Visit my <a href="https://www.youtube.com/c/drnancyli" target="_blank">YouTube channel</a> or <a href="https://instagram.com/drnancyli" target="_blank">Instagram</a>.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #94a3b8;">
+        Presented by <span style="color: var(--accent);">Lovely Bisht</span>
+    </div>
+</div>
+
+</body>
+</html>

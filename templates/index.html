@@ -6,282 +6,103 @@
     <title>Weatherly</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
         :root {
             --glass-bg: rgba(255, 255, 255, 0.1);
             --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-highlight: rgba(255, 255, 255, 0.05);
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --accent: #4facfe;
             --text-main: #ffffff;
-            --text-muted: #e2e8f0;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
             font-family: 'Outfit', sans-serif;
             min-height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?q=80&w=2851&auto=format&fit=crop') no-repeat center center/cover;
             color: var(--text-main);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            display: flex; align-items: center; justify-content: center; padding: 20px;
         }
-
-       
         .app {
-            width: 100%;
-            max-width: 500px;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 40px 30px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.8s ease-out;
-            position: relative;
-            overflow: hidden;
+            width: 100%; max-width: 500px;
+            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 30px;
+            padding: 40px 30px; position: relative;
         }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .title {
-            font-size: 28px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .title { font-size: 28px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
         .title i { color: var(--accent); }
-
-        .history-btn {
-            background: var(--glass-bg);
-            color: var(--text-main);
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 12px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--glass-border);
+        
+        .nav-buttons { display: flex; gap: 10px; }
+        .btn-glass {
+            background: var(--glass-bg); color: var(--text-main); text-decoration: none;
+            padding: 10px 15px; border-radius: 12px; font-size: 14px;
+            border: 1px solid var(--glass-border); transition: 0.3s;
         }
+        .btn-glass:hover { background: var(--accent); border-color: var(--accent); }
 
-        .history-btn:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-            border-color: var(--accent);
-        }
-
-       
-        .search-card {
-            margin-bottom: 30px;
-        }
-
-        form {
-            position: relative;
-            display: flex;
-            gap: 10px;
-        }
-
+        form { display: flex; gap: 10px; margin-bottom: 30px; }
         input {
-            width: 100%;
-            padding: 16px 20px;
-            padding-right: 50px;
-            border-radius: 16px;
-            border: 2px solid var(--glass-border);
-            background: rgba(0, 0, 0, 0.2);
-            color: white;
-            font-size: 16px;
-            font-family: inherit;
-            transition: 0.3s;
-            outline: none;
+            width: 100%; padding: 16px; border-radius: 16px; border: 2px solid var(--glass-border);
+            background: rgba(0,0,0,0.2); color: white; outline: none; transition: 0.3s;
         }
-
-        input:focus {
-            border-color: var(--accent);
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        input::placeholder { color: #94a3b8; }
-
+        input:focus { border-color: var(--accent); background: rgba(0,0,0,0.4); }
         button {
-            padding: 0 24px;
-            border-radius: 16px;
-            border: none;
-            background: var(--accent);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: inherit;
+            padding: 0 24px; border-radius: 16px; border: none; background: var(--accent);
+            color: white; cursor: pointer; transition: 0.3s;
         }
+        button:hover { background: #00f2fe; }
 
-        button:hover {
-            background: #00f2fe;
-            box-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
-        }
-
-        .weather-card {
-            text-align: center;
-            animation: slideUp 0.5s ease-out;
-        }
-
-        .location-badge {
-            display: inline-block;
-            background: var(--glass-bg);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-bottom: 15px;
-            border: 1px solid var(--glass-border);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .main-temp-group {
-            margin-bottom: 25px;
-        }
-
-        .temp {
-            font-size: 84px;
-            font-weight: 600;
-            line-height: 1;
-            background: linear-gradient(to bottom, #fff, #a5f3fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .desc {
-            font-size: 20px;
-            color: var(--accent);
-            font-weight: 400;
-            margin-top: 5px;
-            text-transform: capitalize;
-        }
-
-     
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
+        .weather-card { text-align: center; animation: slideUp 0.5s ease-out; }
+        .temp { font-size: 84px; font-weight: 600; line-height: 1; margin: 20px 0; }
+        .desc { font-size: 20px; color: var(--accent); text-transform: capitalize; }
+        
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
         .stat {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 15px;
-            border-radius: 18px;
-            border: 1px solid var(--glass-border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s;
+            background: rgba(255,255,255,0.03); padding: 15px; border-radius: 18px;
+            border: 1px solid var(--glass-border); display: flex; flex-direction: column;
+            align-items: center; gap: 5px; color: white; text-decoration: none;
         }
-
-        .stat:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-3px);
-        }
-
-        .stat-icon {
-            font-size: 18px;
-            color: var(--accent);
-            margin-bottom: 4px;
-        }
-
-        .label {
-            font-size: 12px;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .value {
-            font-size: 16px;
-            font-weight: 600;
-            color: white;
-        }
-
-        .map-link {
-            text-decoration: none;
-            color: inherit;
-            display: contents;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 12px;
-            color: #64748b;
-        }
-
-       
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        footer { text-align: center; margin-top: 30px; font-size: 12px; color: #94a3b8; }
+        .footer-name { color: var(--accent); font-weight: 600; }
+        
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
 <div class="app">
-
     <div class="header">
         <div class="title"><i class="fas fa-bolt"></i> Weatherly</div>
-        <a href="/history" class="history-btn"><i class="fas fa-history"></i> History</a>
+        <div class="nav-buttons">
+            <a href="/about" class="btn-glass">About Program</a>
+            <a href="/history" class="btn-glass"><i class="fas fa-history"></i></a>
+        </div>
     </div>
 
-    <div class="search-card">
-        <form method="GET" action="/">
-            <input type="text" name="city" placeholder="Search city..." value="{{ request.args.get('city','') }}" required autocomplete="off">
-            <button type="submit"><i class="fas fa-search"></i></button>
-        </form>
-    </div>
+    <form method="GET" action="/">
+        <input type="text" name="city" placeholder="Search city..." value="{{ request.args.get('city','') }}" autocomplete="off">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
 
     {% if weather %}
     <div class="weather-card">
-        <div class="location-badge">
-            <i class="fas fa-map-marker-alt"></i> {{ weather.location }}
-        </div>
-        
-        <div class="main-temp-group">
-            <div class="temp">{{ weather.temperature }}°</div>
-            <div class="desc">{{ weather.description.title() }}</div>
-        </div>
+        <div><i class="fas fa-map-marker-alt"></i> {{ weather.location }}</div>
+        <div class="temp">{{ weather.temperature }}°</div>
+        <div class="desc">{{ weather.description }}</div>
 
         <div class="grid">
             <div class="stat">
-                <div class="stat-icon"><i class="fas fa-droplet"></i></div>
-                <div class="label">Humidity</div>
-                <div class="value">{{ weather.humidity }}%</div>
+                <div style="color:var(--accent);"><i class="fas fa-droplet"></i></div>
+                <div style="font-size:12px; opacity:0.7;">Humidity</div>
+                <div>{{ weather.humidity }}%</div>
             </div>
-            
             <div class="stat">
-                <div class="stat-icon"><i class="fas fa-globe"></i></div>
-                <div class="label">Coordinates</div>
-                <div class="value">{{ weather.latitude }}, {{ weather.longitude }}</div>
+                <div style="color:var(--accent);"><i class="fas fa-globe"></i></div>
+                <div style="font-size:12px; opacity:0.7;">Coords</div>
+                <div>{{ weather.latitude }}, {{ weather.longitude }}</div>
             </div>
-
-            <a class="map-link" target="_blank" href="{{ weather.map_link }}">
-                <div class="stat" style="grid-column: span 2; background: rgba(79, 172, 254, 0.1);">
-                    <div class="stat-icon"><i class="fas fa-external-link-alt"></i></div>
-                    <div class="label">View on Map</div>
-                    <div class="value" style="color: var(--accent);">Open Google Maps</div>
-                </div>
+            <a href="{{ weather.map_link }}" target="_blank" class="stat" style="grid-column: span 2; background: rgba(79, 172, 254, 0.1);">
+                <div style="color:var(--accent);"><i class="fas fa-external-link-alt"></i></div>
+                <div>View on Google Maps</div>
             </a>
         </div>
     </div>
@@ -289,6 +110,7 @@
 
     <footer>
         <p>Built with Flask • Designed for Speed</p>
+        <p>Created by <span class="footer-name">Lovely Bisht</span></p>
     </footer>
 </div>
 

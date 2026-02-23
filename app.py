@@ -37,6 +37,9 @@ def history():
     records = WeatherRecord.query.order_by(WeatherRecord.created_at.desc()).limit(10).all()
     return render_template("history.html", records=records)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__=="__main__":
     with app.app_context():
